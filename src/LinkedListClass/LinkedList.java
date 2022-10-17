@@ -120,6 +120,18 @@ public class LinkedList {
         return statement;
     }
 
+    public int getBiggestValue() {
+        int biggestNumber = -1;
+        if (head == null) return biggestNumber;
+        Node current = head;
+        biggestNumber = current.data;
+        while (current.next != null) {
+            if (current.data > biggestNumber) biggestNumber = current.data;
+            current = current.next;
+        }
+        return biggestNumber;
+    }
+
     public void reverse() {
         Node temp = null;
         Node current = head;
