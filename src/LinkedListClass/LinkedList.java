@@ -132,6 +132,19 @@ public class LinkedList {
         return biggestNumber;
     }
 
+    public void createNodeInBetween(int previousIndex, int nextIndex) {
+        int previousValue = this.getValueWithIndex(previousIndex);
+        int nextValue = this.getValueWithIndex(nextIndex);
+        int newValue = nextValue - previousValue;
+        if (newValue < 0) newValue -= newValue * 2;
+        this.append(newValue);
+    }
+
+    public int getMiddleValue() {
+        int middleIndex = this.countNodes() / 2;
+        return this.getValueWithIndex(middleIndex);
+    }
+
     public void reverse() {
         Node temp = null;
         Node current = head;
@@ -146,5 +159,15 @@ public class LinkedList {
         if (temp != null) {
             head = temp.prev;
         }
+    }
+
+    public int countGivenValue(int givenValue) {
+        int counter = 0;
+        Node current = head;
+        while (current.next != null) {
+            if (current.data == givenValue) counter++;
+            current = current.next;
+        }
+        return counter;
     }
 }
